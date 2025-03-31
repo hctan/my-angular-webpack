@@ -3,13 +3,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { AngularWebpackPlugin } = require('@ngtools/webpack');
 
+const stylePaths = [ path.join(process.cwd(), "node_modules/swagger-editor-dist/swagger-editor.css") ];
+
 module.exports = function () {
    return {
         mode: 'development', // Set mode to development
-       entry: './src/main.ts',
+        entry: {
+            "main": ['./src/main.ts'],
+            "styles": stylePaths
+        },
        output: {
            path: __dirname + '/dist',
-           filename: 'bundle.js',
+           filename: '[name].bundle.js',
+           chunkFilename: '[id].chunk.js',
            publicPath: '/', // Ensure proper routing
        },
         resolve: {
@@ -40,11 +46,12 @@ module.exports = function () {
         },
 
        plugins: [
-            /* new CopyWebpackPlugin({
+            new CopyWebpackPlugin({
                 patterns: [
-                    { from: 'src/assets', to: 'assets' }
+                    { from: "node_modules/swagger-editor-dist/swagger-editor-bundle.js", to: 'assets/swagger-editor/' },
+                    { from: "node_modules/swagger-editor-dist/swagger-editor-standalone-preset.js", to: 'assets/swagger-editor/' }
                 ]
-            }), */
+            }),
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, 'src/index.html'), // Correct path to index.html
             }),

@@ -10,4 +10,5 @@ to build:
 to start:
 1) npm start
 2) go to http://localhost:8080/host/ (parent app)
-3) http://localhost:4200 (angular app)
+3) http://localhost:4200 (angular app
+)
