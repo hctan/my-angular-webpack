@@ -1,0 +1,16 @@
+<!-- Example host app HTML -->
+<div id="zoid-container"></div>
+<script src="https://cdn.jsdelivr.net/npm/zoid@latest/dist/zoid.js"></script>
+<!--<script src="zoid-component.bundle.js"></script>--> <!--not working-->
+<script>
+    // Render the Zoid component
+    var MyAppComponent = zoid.create({
+        tag: 'my-app-component', // Unique tag for the component
+        url: 'http://localhost:4200', // Path to your Angular app
+        dimensions: {
+            width: '100%',
+            height: '500px',
+        },
+    });
+    MyAppComponent().render(document.getElementById('zoid-container'));
+</script>

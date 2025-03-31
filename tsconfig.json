@@ -1,15 +1,17 @@
 {
-    "compilerOptions": {
-      "target": "es2015",
-      "module": "es2020",
+  "compilerOptions": {
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "module": "esnext",
       "moduleResolution": "node",
-      "experimentalDecorators": true,
       "emitDecoratorMetadata": true,
-      "strict": true,
-      "skipLibCheck": true
-    },
-    "angularCompilerOptions": {
-      "enableIvy": true,
-      "compilationMode": "partial"
-    }
+      "experimentalDecorators": true,
+      "target": "es2015",
+      "typeRoots": ["node_modules/@types"],
+      "lib": ["es2018", "dom"]
+  },
+  "angularCompilerOptions": {
+      "enableIvy": true
   }
+}
